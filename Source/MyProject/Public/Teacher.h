@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Person.h"
+#include "LessonInterface.h"
 #include "Teacher.generated.h"
 
 /**
@@ -11,6 +12,7 @@
  */
 UCLASS()
 class MYPROJECT_API UTeacher : public UPerson
+	, public ILessonInterface
 {
 	GENERATED_BODY()
 

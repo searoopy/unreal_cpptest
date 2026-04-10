@@ -11,7 +11,7 @@ UTeacher::UTeacher()
 
 void UTeacher::DoLesson()
 {
-	Super::DoLesson();
+	ILessonInterface::DoLesson();
 
 	UE_LOG(LogTemp, Log, TEXT("선생님이 수업을 강의함."));
 }
