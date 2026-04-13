@@ -2,17 +2,26 @@
 
 
 #include "Student.h"
+#include "Card.h"
 
 UStudent::UStudent()
 {
 	Name = TEXT("개자슥");
 	Year = 3;
-	Id = 1;
+	Card->SetCardType(ECardType::Student);
 }
 
 void UStudent::DoLesson()
 {
 	ILessonInterface::DoLesson();
 
-	UE_LOG(LogTemp, Log, TEXT("학생이 수업을 듣습니다."));
+	UE_LOG(LogTemp, Log, TEXT("%s이 수업을 듣습니다."), *Name);
+}
+
+void UStudent::GetNotification(const FString& InSchoolName, const FString& InNewContents)
+{
+
+	UE_LOG(LogTemp, Log, 
+		TEXT("[Student] %s님이 %s로부터 받은 메시지 : %s "), *Name, *InSchoolName, *InNewContents);
+
 }

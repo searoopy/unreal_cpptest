@@ -17,39 +17,32 @@ UMyGameInstance::UMyGameInstance()
 void UMyGameInstance::Init()
 {
 	Super::Init();
-
+	UE_LOG(LogTemp, Log, TEXT("====================="));
 	
-	TArray<UPerson*> People =
-	{
-		NewObject<UStudent>(),
-		NewObject<UTeacher>(),
-		NewObject<UStaff>()
-	};
+
+	//학사 정보 객체 생성
+	CourseInfo = NewObject<UCourseInfo>(this);
 
 
-	for (const UPerson* Person : People)
-	{
-		UE_LOG(LogTemp, Log, TEXT("이름 : %s"), *Person->GetName());
+	//3명의 학생 추가.
+	UStudent* Student1 = NewObject<UStudent>(this);
+	Student1->SetName(TEXT("학생1"));
+	UStudent* Student2 = NewObject<UStudent>(this);
+	Student2->SetName(TEXT("학생2"));				
+	UStudent* Student3 = NewObject<UStudent>(this);	
+	Student3->SetName(TEXT("학생3"));
 
-	}
+	//알림에 구독.
+	CourseInfo->OnChanged.AddUObject(Student1, &UStudent::GetNotification);
+	CourseInfo->OnChanged.AddUObject(Student2, &UStudent::GetNotification);
+	CourseInfo->OnChanged.AddUObject(Student3, &UStudent::GetNotification);
+
+
+
+	//변경된 학사 정보 발행.
+	CourseInfo->ChangeCourseInfo(SchoolName, TEXT("학사 정보가 변경되었습니다."));
 
 	UE_LOG(LogTemp, Log, TEXT("====================="));
-
-		
-	for ( UPerson* Person : People)
-	{
-		ILessonInterface* LessonInterface = Cast<ILessonInterface>(Person);
-		if(LessonInterface )
-		{
-			UE_LOG(LogTemp, Log, TEXT("%s님은 수업에 참여할수있습니다"), *Person->GetName() );
-			LessonInterface->DoLesson();
-		}
-		else
-		{
-			UE_LOG(LogTemp, Log, TEXT("%s님은 수업에 참여할없습니다"), *Person->GetName());
-		}
-	}
-
 
 }
  

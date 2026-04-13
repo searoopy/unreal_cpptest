@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -23,8 +23,11 @@ public:
 
 	virtual void DoLesson() override;
 
+
+	//알림을 구독할 함수
+	void GetNotification(const FString& InSchoolName, const FString& InNewContents);
+
 private:
-	UPROPERTY()
-	int32 Id;
+
 	
 };

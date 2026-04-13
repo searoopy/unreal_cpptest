@@ -4,8 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+
+//#include "CourseInfo.h"
 #include "MyGameInstance.generated.h"
 
+class UCourseInfo;
 /**
  * 
  */
@@ -24,4 +27,7 @@ private:
 	UPROPERTY()
 	FString SchoolName;
 
+	//학사 정보 객체.
+	UPROPERTY()
+	TObjectPtr<class UCourseInfo> CourseInfo; 
 };

@@ -4,7 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+
+#include "Card.h"
 #include "Person.generated.h"
+
+
 
 /**
  * 
@@ -23,6 +27,12 @@ public:
 	FORCEINLINE FString GetName() const { return Name; }
 	FORCEINLINE void SetName(const FString& InName) { Name = InName; }
 	
+	FORCEINLINE UCard* GetCard() const { return Card; }
+	FORCEINLINE void SetCard(UCard* InCard)
+	{
+		Card = InCard;
+	}
+
 
 protected:
 	UPROPERTY()
@@ -30,5 +40,8 @@ protected:
 
 	UPROPERTY()
 	int32 Year;
-	
+
+
+	UPROPERTY()
+	TObjectPtr<UCard> Card;
 };
