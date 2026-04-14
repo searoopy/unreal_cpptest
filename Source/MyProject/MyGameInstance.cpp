@@ -183,7 +183,6 @@ void UMyGameInstance::Init()
 		LogTemp,
 		Log,
 		TEXT("이름 set수 : % d"),
-		
 		StudentsSet.Num()
 	);
 }
